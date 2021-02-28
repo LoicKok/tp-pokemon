@@ -1,0 +1,8 @@
+<mat-sidenav-container class="toto">
+    <mat-sidenav mode="side" opened class="menu">
+        <app-pokemon-list (getPokemonDetailsEmitter)="onGetPokemonDetails($event)"></app-pokemon-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-pokemon-detail [pokemon]="selectedPokemon"></app-pokemon-detail>
+    </mat-sidenav-content>
+</mat-sidenav-container>

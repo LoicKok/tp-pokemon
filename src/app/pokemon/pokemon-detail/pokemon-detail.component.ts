@@ -11,14 +11,14 @@ import { PokemonServiceService } from '../pokemon-service.service';
 })
 export class PokemonDetailComponent implements OnInit {
 
-  @Input() pokemon: Pokemon;
+  @Input() pokemon?: Pokemon;
   constructor(private route: ActivatedRoute,
     private PokemonService: PokemonServiceService,
     private location: Location) { }
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap!.get('id');
-    this.PokemonService.getPokemonById(id).subscribe(myResult => this.pokemon = myResult);
+    //const id = +this.route.snapshot.paramMap!.get('id');
+    //this.PokemonService.getPokemonById(id).subscribe(myResult => this.pokemon = myResult);
   }
 
   Back(): void {

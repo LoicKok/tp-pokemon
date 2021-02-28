@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ApiResponse } from '../models/apiResponse.model';
 import { Pokemon } from '../models/pokemon.model';
 import { PokemonServiceService } from '../pokemon-service.service';
@@ -14,6 +14,8 @@ export class PokemonListComponent implements OnInit {
   offset: number = 0;
   limit: number = 20;
 
+  @Output() getPokemonDetailsEmitter = new EventEmitter<Pokemon>();
+
   constructor(private PokemonService: PokemonServiceService) { }
 
   ngOnInit(): void {
@@ -27,6 +29,13 @@ export class PokemonListComponent implements OnInit {
       (result: ApiResponse<Pokemon>) => this.pokemons.push(...result.data)
     );
   }
-    
+
+  getPokemonId(pokemon:Pokemon):void{
+      this.getPokemonDetailsEmitter.emit(pokemon);
+  }
+  
+  getPokemonDetails(pokemon: Pokemon): void {
+    this.getPokemonDetailsEmitter.emit(pokemon);
+}
 
 }
